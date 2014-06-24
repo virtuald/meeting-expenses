@@ -1,0 +1,77 @@
+
+
+<template name="new-meeting">
+
+<!-- 
+	<h3>Meeting details</h3>
+
+	Name: <input id="meeting-name" /><br/>
+	Time: <input id="meeting-time" /><br/>
+	
+	<h3>Participants</h3>
+	
+		Small: <input id="meeting-p-small" /> cost: <input id="meeting-p-small-cost" value="150" /><br/>
+		Medium: <input id="meeting-p-medium" /> cost: <input id="meeting-p-medium-cost" value="200" /><br/>
+		Large: <input id="meeting-p-large" /> cost: <input id="meeting-p-large-cost" value="300" /><br/>
+
+	<button type="button" class="btn btn-primary" id="done-editing">Done</button>
+-->
+
+	{{> quickForm collection="Meetings" id="addMeeting" type="method" meteormethod="insertMeeting"}}
+</template>
+
+<template name="edit_meeting">
+	{{> quickForm collection="Meetings" id="editMeeting" doc=currentMeeting type="method" meteormethod="updateMeeting"}}
+	<button type="button" class="btn btn-primary" id="delete-meeting">Delete</button>
+</template>
+
+
+<template name="meeting">
+		
+	<div class="container">
+		<h3><small>Meeting</small> {{name}}</h3>
+		
+		{{#if hasStarted}}
+			Since {{localStart}}, this meeting has burned:
+		{{else}}
+			This meeting will not start until {{localStart}}
+		{{/if}}
+			
+		<div style="font-size: 5em">
+			<span class="odometer odometer-auto-theme">
+			<span class="odometer-inside">
+				<span class="odometer-digit">
+					<span class="odometer-digit-spacer">8</span>
+					<span class="odometer-digit-inner">
+					<span class="odometer-ribbon">
+					<span class="odometer-ribbon-inner">
+					<span class="odometer-value">$</span>
+					</span></span></span></span>
+			</span>
+			</span><span id="odometer"></span>
+		</div>
+		
+		<h3><small>Participants</small></h3>
+		
+		<table class="table">
+			<tr>
+  				<td>Small</td>
+  				<td>{{smallParticipants}}</td>
+  				<td>${{smallParticipantsCost}}/hr</td>
+  			</tr>
+			
+			<tr>
+  				<td>Medium</td>
+  				<td>{{mediumParticipants}}</td>
+  				<td>${{mediumParticipantsCost}}/hr</td>
+  			</tr>
+			
+			<tr>
+  				<td>Large</td>
+  				<td>{{largeParticipants}}</td>
+  				<td>${{largeParticipantsCost}}/hr</td>
+  			</tr>
+		</table>
+	</div>
+	
+</template>

@@ -1,0 +1,8 @@
+.meteor/local
+.meteor/meteorite
+.meteor/packages
+public/node_modules
+packages
+smart.lock
+
+.project

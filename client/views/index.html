@@ -1,0 +1,18 @@
+
+
+<template name="index">
+
+	{{> Meetings }}
+	
+</template>
+
+<template name="Meetings">
+	{{> pages}}
+  	{{> pagesNav}}
+</template>
+
+<template name="meeting_link">
+	<div class="pagesItemDefault">
+		<a href="{{pathFor 'meeting'}}">{{name}} - {{localStart}}</a>
+	</div>
+</template>
