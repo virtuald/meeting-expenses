@@ -4,13 +4,14 @@ function calculateCost()
 	var data = Router.getData();
 	
 	var start = new Date(data.start);
+	var stop = new Date(data.stop);
 	var now = new Date();
 	
 	if (now < start)
 		return 0;
 	
-	if (now > data.stop)
-		now = data.stop;
+	if (now > stop)
+		now = stop;
 	
 	return (((data.smallParticipants || 0) * (data.smallParticipantsCost || 0)) + 
 		   ((data.mediumParticipants || 0) * (data.mediumParticipantsCost || 0)) + 
