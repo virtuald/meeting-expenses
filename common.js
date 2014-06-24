@@ -82,7 +82,7 @@ Meetings.attachSchema(Schemas.Meetings);
 var meetingsPager = new Meteor.Pagination(Meetings,{
     router: 'iron-router',
     routerTemplate: 'index',
-    route: '/meetings/',
+    route: '/',
     itemTemplate: 'meeting_link',
     fields: {accessKey: false}
 });
