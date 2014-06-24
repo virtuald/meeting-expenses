@@ -26,6 +26,10 @@ Meteor.methods({
 		if (meeting.accessKey != data.$set.accessKey)
 			throw new Meteor.Error(401, "Invalid access key specified");
 		
+		data.$set.start = moment(data.$set.start, TIME_FORMAT).toISOString();
+		if (data.$set.stop)
+			data.$set.stop = moment(data.$set.stop, TIME_FORMAT).toISOString();
+		
 		data.$set.name = meeting.name;
 		Meetings.update(meeting._id, data);
 	},
